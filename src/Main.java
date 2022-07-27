@@ -96,6 +96,10 @@ public class Main {
             romanSystem = true;
         }
 
+        if((operandA < 1) || (operandB < 1) || (operandA > 10) || (operandB > 10)) {
+            throw new Exception("Input values range error");
+        }
+
         int result = switch (arguments[1]) {
             case "+" -> operandA + operandB;
             case "-" -> operandA - operandB;
@@ -105,8 +109,8 @@ public class Main {
         };
 
         if(romanSystem){
-            if(result < 0){
-                throw new Exception("No negative numbers in Roman system");
+            if(result <= 0){
+                throw new Exception("No negative numbers and zero in Roman system");
             }
             resultString = roman.dectoroman(result);
         } else {
